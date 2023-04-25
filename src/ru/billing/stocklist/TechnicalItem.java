@@ -1,17 +1,13 @@
+package ru.billing.stocklist;
+
 import java.util.Objects;
 
-public class TechnicalItem extends GenericItem{
+public class TechnicalItem extends GenericItem {
     short warrantyTime; // гарантийный срок (суток)
 
     public TechnicalItem(String name, float price, short warrantyTime) {
         super(name, price, Category.GENERAL);
         this.warrantyTime = warrantyTime;
-    }
-
-
-    @Override
-    void printAll(){
-        System.out.printf("ID: %d , Name: %-20s , price:%5.2f , category: %s , warranity time: %d \n",ID,name,price, category, warrantyTime );
     }
 
     @Override
@@ -30,14 +26,19 @@ public class TechnicalItem extends GenericItem{
 
     @Override
     public TechnicalItem clone(){
-        TechnicalItem newItem = new TechnicalItem(this.name, this.price, this.warrantyTime);
+        TechnicalItem newItem = new TechnicalItem(super.getName(), super.getPrice(), this.warrantyTime);
         return newItem;
     }
 
     @Override
     public String toString() {
-        return "TechnicalItem{" +
-                "warrantyTime=" + warrantyTime +
+        return "ru.billing.stocklist.TechnicalItem{" +
+                ", ID=" + super.getID() +
+                ", name='" + super.getName() + '\'' +
+                ", price=" + super.getPrice() +
+                ", analogue=" + super.getPrice() +
+                ", category=" + super.getCategory() +
+                ", warrantyTime=" + warrantyTime +
                 '}';
     }
 }

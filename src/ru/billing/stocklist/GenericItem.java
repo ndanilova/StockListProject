@@ -1,12 +1,14 @@
+package ru.billing.stocklist;
+
 import java.util.Objects;
 
 public class GenericItem {
-    static int currentID = 1;
-    public int ID;
-    public String name; // Наименование товара
-    public float price; //Цена товара
-    public GenericItem analogue; // analogue product
-    public Category category = Category.GENERAL;
+    private int currentID = 1;
+    private int ID;
+    private String name; // Наименование товара
+    private float price; //Цена товара
+    private GenericItem analogue; // analogue product
+    private Category category = Category.GENERAL;
 
     public GenericItem(String name, float price, Category category) {
         ID = currentID++;
@@ -23,9 +25,6 @@ public class GenericItem {
     public GenericItem(){
         ID = currentID++;
     };
-    void printAll(){
-            System.out.printf("ID: %d , Name: %-20s , price:%5.2f , category: %s \n",ID,name,price, category);
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -49,12 +48,47 @@ public class GenericItem {
 
     @Override
     public String toString() {
-        return "GenericItem{" +
+        return "ru.billing.stocklist.GenericItem{" +
                 "ID=" + ID +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", analogue=" + analogue +
                 ", category=" + category +
                 '}';
+    }
+    public int getID() {
+        return ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public GenericItem getAnalogue() {
+        return analogue;
+    }
+
+    public void setAnalogue(GenericItem analogue) {
+        this.analogue = analogue;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

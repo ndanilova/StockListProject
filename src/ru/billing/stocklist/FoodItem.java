@@ -1,26 +1,25 @@
+package ru.billing.stocklist;
+
 import java.util.Date;
 import java.util.Objects;
 
-public class FoodItem extends GenericItem{
-    Date dateOfIncome; // дата производства
-    short expires; // срок годности
+public class FoodItem extends GenericItem {
+    private Date dateOfIncome;
+    private short expires; // срок годности
 
     public FoodItem(String name, float price, FoodItem analog, Date date, short expires) {
         super(name, price, analog);
         this.dateOfIncome = date;
         this.expires = expires;
     }
+
     public FoodItem(String name, float price, short expires) {
         super(name, price, Category.GENERAL);
         this.expires = expires;
     }
-    public FoodItem(String name){
-        super(name, 0f, Category.GENERAL);
-    }
 
-    @Override
-    void printAll(){
-        System.out.printf("ID: %d , Name: %-20s , price:%5.2f , category: %s , date of income: %tA , expires: %d \n",ID,name,price, category, dateOfIncome, expires );
+    public FoodItem(String name) {
+        super(name, 0f, Category.GENERAL);
     }
 
     @Override
@@ -38,17 +37,41 @@ public class FoodItem extends GenericItem{
     }
 
     @Override
-    public FoodItem clone(){
-        FoodItem newItem = new FoodItem(this.name, this.price, this.expires);
+    public FoodItem clone() {
+        FoodItem newItem = new FoodItem(super.getName(), super.getPrice(), this.expires);
         newItem.dateOfIncome = this.dateOfIncome;
         return newItem;
     }
 
     @Override
     public String toString() {
-        return "FoodItem{" +
+        return "ru.billing.stocklist.FoodItem{" +
                 "dateOfIncome=" + dateOfIncome +
                 ", expires=" + expires +
+                ", ID=" + super.getID() +
+                ", name='" + super.getName() + '\'' +
+                ", price=" + super.getPrice() +
+                ", analogue=" + super.getPrice() +
+                ", category=" + super.getCategory() +
                 '}';
     }
+
+    public Date getDateOfIncome() {
+        return dateOfIncome;
+    }
+
+    public void setDateOfIncome(Date dateOfIncome) {
+        this.dateOfIncome = dateOfIncome;
+    }
+
+    public short getExpires() {
+        return expires;
+    }
+
+    public void setExpires(short expires) {
+        this.expires = expires;
+    }
 }
+
+
+
