@@ -3,7 +3,7 @@ package ru.billing.stocklist;
 import java.util.Objects;
 
 public class GenericItem {
-    private int currentID = 1;
+    private static int currentID = 1;
     private int ID;
     private String name; // Наименование товара
     private float price; //Цена товара
